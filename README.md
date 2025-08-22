@@ -18,7 +18,7 @@ The project includes authentication with email otp  and phone number .
 ## 🛠️ Tech Stack
 - **Backend:** Django
 - **Frontend:** HTML, CSS, Bootstrap, font awesome ,JavaScript  
-- **Database:** SQLite(default) / Mysql (developed)  
+- **Database:** MySQL (configurable for SQLite)
 - **Auth:** Email (OTP),phone (OTP)  
 - **Payments:** Razorpay API  
 - **Deployment Ready:** python anywhere 
