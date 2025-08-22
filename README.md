@@ -16,7 +16,7 @@ The project includes authentication with email otp  and phone number .
 ---
 
 ## 🛠️ Tech Stack
-- **Backend:** Django
+- **Backend:** Django ,python
 - **Frontend:** HTML, CSS, Bootstrap, font awesome ,JavaScript  
 - **Database:** MySQL (configurable for SQLite)
 - **Auth:** Email (OTP),phone (OTP)  
