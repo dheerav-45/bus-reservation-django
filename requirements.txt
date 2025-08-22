@@ -1,0 +1,12 @@
+Django>=5.0,<6.0
+django-environ>=0.11
+django-allauth>=65.0
+python-decouple==3.8
+Pillow>=10.0      # for image uploads
+requests>=2.32    # API calls
+razorpay>=1.4     # payment integration
+psycopg2-binary>=2.9   # PostgreSQL (use if DB is Postgres)
+gunicorn>=22.0         # for deployment
+whitenoise>=6.6        # static file handling in production
+mysqlclient==2.2.7     #database
+twilio==9.6.1          #twiolio
