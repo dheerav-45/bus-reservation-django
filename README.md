@@ -5,13 +5,14 @@ The project includes authentication with email otp  and phone number .
 ---
 
 ## 🚀 Features
-- ✅ User registration, login
+- ✅ User registration, login ,logout
 - ✅ Email and Phone number 
 - ✅ Bus route management and seat reservation
 - ✅ Interactive seat selection with availability
 - ✅ Razorpay payment integration
 - ✅ Profile with image upload (Pillow)
 - ✅ Responsive UI with Bootstrap /font awesome JavaScript interactivity
+- ✅ Email Notifications
 
 ---
 
@@ -20,7 +21,8 @@ The project includes authentication with email otp  and phone number .
 - **Frontend:** HTML, CSS, Bootstrap, font awesome ,JavaScript  
 - **Database:** MySQL (configurable for SQLite)
 - **Auth:** Email (OTP),phone (OTP)  
-- **Payments:** Razorpay API  
+- **Payments:** Razorpay API
+- **Gmail:** SMTP setup for notifications
 - **Deployment Ready:** python anywhere 
 
 ---
@@ -59,3 +61,9 @@ python manage.py createsuperuser
 ```bash
 python manage.py runserver
 Now visit http://127.0.0.1:8000/
+
+ 
+- ⚙️ **Others**
+  - Secure `.env` configuration  
+  - `.gitignore` for sensitive files  
+  - Requirements file for easy setup
