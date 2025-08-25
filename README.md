@@ -56,7 +56,7 @@ Route details with stops and timings
 
 Available seats
 
-Seat Selection & Booking
+**Seat Selection & Booking**
 
 Choose seats from the interactive seat layout.
 
@@ -64,7 +64,7 @@ View total fare before confirming.
 
 Proceed to secure payment via Razorpay.
 
-Booking Confirmation
+**Booking Confirmation**
 
 Once payment is successful, booking details are saved.
 
@@ -72,13 +72,13 @@ Download/print ticket (with QR code).
 
 View booking history anytime in the dashboard.
 
-Reviews & Ratings
+**Reviews & Ratings**
 
 After traveling, users can leave a review and rating for the bus/operator.
 
 Helps other passengers in selecting quality services.
 
-Profile Management
+**Profile Management**
 
 Update profile details and profile picture.
 
@@ -86,7 +86,7 @@ View personal booking history.
 
 Manage saved payment preferences.
 
-Admin Panel Features
+**Admin Panel Features**
 
 Admin can add/update buses, routes, and other operators.
 
