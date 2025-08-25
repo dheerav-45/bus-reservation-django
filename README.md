@@ -26,6 +26,73 @@ The project includes authentication with email otp  and phone number .
 - **Deployment Ready:** python anywhere 
 
 ---
+🎯 Usage Guide
+
+Open browser → thinkbuildgrow.pythonanywhere.com
+
+User Authentication
+
+Register as a new user or login with existing credentials.
+
+Manage your profile (update name, email, password, and profile image).
+
+Search & Filter Buses
+
+Enter source, destination, and travel date to search available buses.
+
+eg.kochi to bangalore date: 1/9/2025 
+
+Apply filters:
+
+Bus type (AC, Non-AC, Sleeper, Seater, etc.)
+
+View Bus & Route Details
+
+Click on a bus to view full details:
+
+Bus operator
+
+Route details with stops and timings
+
+Available seats
+
+Seat Selection & Booking
+
+Choose seats from the interactive seat layout.
+
+View total fare before confirming.
+
+Proceed to secure payment via Razorpay.
+
+Booking Confirmation
+
+Once payment is successful, booking details are saved.
+
+Download/print ticket (with QR code).
+
+View booking history anytime in the dashboard.
+
+Reviews & Ratings
+
+After traveling, users can leave a review and rating for the bus/operator.
+
+Helps other passengers in selecting quality services.
+
+Profile Management
+
+Update profile details and profile picture.
+
+View personal booking history.
+
+Manage saved payment preferences.
+
+Admin Panel Features
+
+Admin can add/update buses, routes, and other operators.
+
+Manage all bookings and registered users.
+
+View analytics (optional).
 
 ## ⚙️ Setup Instructions
 
