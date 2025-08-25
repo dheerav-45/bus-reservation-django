@@ -94,6 +94,8 @@ Manage all bookings and registered users.
 
 View analytics (optional).
 
+hello
+
 ---
 
 ## ⚙️ Setup Instructions
