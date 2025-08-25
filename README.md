@@ -30,13 +30,13 @@ The project includes authentication with email otp  and phone number .
 
 Open browser → thinkbuildgrow.pythonanywhere.com
 
-User Authentication
+**User Authentication**
 
 Register as a new user or login with existing credentials.
 
 Manage your profile (update name, email, password, and profile image).
 
-Search & Filter Buses
+**Search & Filter Buses**
 
 Enter source, destination, and travel date to search available buses.
 
@@ -46,7 +46,7 @@ Apply filters:
 
 Bus type (AC, Non-AC, Sleeper, Seater, etc.)
 
-View Bus & Route Details
+**View Bus & Route Details**
 
 Click on a bus to view full details:
 
