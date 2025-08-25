@@ -1,4 +1,4 @@
-# 🚌 Bus Reservation System (Django Full Stack)
+# 🚌 QuickBus ,Bus Reservation System (Django Full Stack)
 
 A full-stack **Django** project that allows users to register, book bus tickets and make secure payments via **Razorpay**.  
 The project includes authentication with email otp  and phone number .
