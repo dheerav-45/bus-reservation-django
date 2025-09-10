@@ -2,122 +2,400 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Phone Login</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>Phone Login - QuickBus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #f8f9fa;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      background-color: #007bff;
+      padding: 24px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      padding: 40px 35px;
+      width: 100%;
+      max-width: 500px;
+      margin: 90px auto 40px;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .logo h1 {
+      font-size: 42px;
+      font-weight: 400;
+      color: #4a9bde;
+      font-style: italic;
+      font-family: 'Brush Script MT', cursive;
+    }
+
+    .form-header {
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .form-header h2 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 8px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .form-input:focus {
+      border-color: #4ade80;
+      box-shadow: 0 0 6px rgba(74, 222, 128, 0.5);
+    }
+
+    .feedback {
+      font-size: 13px;
+      margin-top: 5px;
+      color: #ef4444;
+      display: none;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background-color: #4ade80;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      margin: 25px 0 15px;
+    }
+
+    .submit-btn:hover {
+      background-color: #3266d8;
+      color: #fff;
+    }
+
+    .password-wrapper {
+      position: relative;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 18px;
+      color: #9ca3af;
+      user-select: none;
+    }
+
+    /* Human Verification */
+    .checkbox-wrapper {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding: 16px;
+      border: 2px solid #e1e1e1;
+      border-radius: 6px;
+      background: #f9f9f9;
+      position: relative;
+    }
+
+    .checkbox-wrapper.verified {
+      border-color: #4caf50;
+      background: #f0f8f0;
+    }
+
+    .robot-challenge {
+      display: none;
+      margin-top: 12px;
+      padding: 12px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .robot-challenge.show {
+      display: block;
+      animation: slideDown 0.3s ease;
+    }
+
+    .challenge-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 12px 0;
+    }
+
+    .challenge-item {
+      width: 60px;
+      height: 60px;
+      border: 2px solid #ddd;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      transition: all 0.2s ease;
+      background: #f9f9f9;
+    }
+
+    .challenge-item.selected {
+      border-color: #1976d2;
+      background: #1976d2;
+      color: white;
+    }
+
+    .challenge-item.correct {
+      border-color: #4caf50;
+      background: #4caf50;
+      color: white;
+    }
+
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-5px);
+      }
+
+      75% {
+        transform: translateX(5px);
+      }
+    }
+  </style>
 </head>
 
-<body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow p-4">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'Home' %}">&#128652; QuickBus</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+<body>
 
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'Home' %}">
-                            <i class="bi bi-house-door-fill me-1"></i>Home
-                        </a>
-                    </li>
-                    {% if user.is_authenticated %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                            <i class="bi bi-person-circle me-1"></i>{{ user.username }}
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li>
-                                <a class="dropdown-item" href="{% url 'profile' %}">
-                                    <i class="bi bi-person-lines-fill me-2"></i>Your Account
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="{% url 'booked' %}">
-                                    <i class="bi bi-journal-check me-2"></i>Booking
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fa-solid fa-gear"></i>Settings
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li>
-                                <a class="dropdown-item text-danger" href="{% url 'logout' %}">
-                                    <i class="bi bi-box-arrow-right me-2"></i>Logout
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'Phone_Login' %}">
-                            <i class="bi bi-box-arrow-in-right me-1"></i>Login
-                        </a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container py-5">
-        <div class="row justify-content-center" style="margin-top: 10%;">
-            <div class="col-md-6 col-lg-5">
-                <div class="card shadow rounded-4">
-                    <div class="card-body p-4">
-                        <h3 class="text-center mb-4">Login with Phone Number</h3>
-                        <form action="#" method="POST">
-                            <div>
-                                {%csrf_token%}
-                                <div class="mb-3">
-                                    <label for="phone" class="form-label">Phone Number</label>
-                                    <input type="text" name="phone_number" id="phone_number" class="form-control"
-                                        placeholder="+1 234 567 8901" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="password" class="form-label">Password </label>
-                                    <input type="password" name="password" id="password" class="form-control" required>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <div></div>
-                                    <a href="{% url 'Phone_Reset_Password' %}" class="small">Forgot password?</a>
-                                </div>
-                                <button type="submit" class="btn btn-primary w-100">Login</button>
-
-                                <p class="text-center mt-3 mb-0">
-                                    You can login with Email !
-                                    <a href="{% url 'Email_Login' %}">Login</a>
-                                </p>
-
-                                <p class="text-center mt-3 mb-0">
-                                    Don't have an account?
-                                    <a href="{% url 'Phone_Signup' %}">Register</a>
-                                </p>
-                            </div>
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold text-light" href="{% url 'Home' %}">&#128652; QuickBus</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link text-light" href="{% url 'Home' %}"><i
+                class="bi bi-house-door-fill me-1"></i>Home</a></li>
+          <li class="nav-item"><a class="nav-link text-light" href="{% url 'Phone_Signup' %}"><i
+                class="bi bi-person-plus-fill me-1"></i>Register</a></li>
+        </ul>
+      </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </nav>
+
+
+  <div class="container" data-aos="zoom-in">
+    <div class="logo">
+      <h1>QuickBus</h1>
+    </div>
+    <div class="form-header">
+      <h2>Login with Phone Number</h2>
+      <span>Don’t have an account? <a href="{% url 'Phone_Signup' %}">Register</a></span>
+    </div>
+
+    <form method="POST" id="loginForm">
+      {% csrf_token %}
+
+
+      <div class="form-group">
+        <input type="text" name="phone_number" id="phone" class="form-input" placeholder="+1 234 567 8901" required>
+        <div class="feedback" id="phoneFeedback">Please enter a valid phone number.</div>
+      </div>
+
+      <div class="form-group password-wrapper">
+        <input type="password" name="password" id="password" class="form-input" placeholder="Password" required>
+        <span class="toggle-password" id="togglePassword"><i class="bi bi-eye-slash"></i></span>
+        <div class="feedback" id="passwordFeedback">Password must be at least 6 characters.</div>
+      </div>
+
+
+      <div class="checkbox-wrapper" id="checkboxWrapper">
+        <input type="checkbox" id="humanVerify">
+        <label for="humanVerify">Verify you are human</label>
+        <div class="robot-challenge" id="robotChallenge">
+          <div>Select all images with <strong>traffic lights</strong></div>
+          <div class="challenge-grid" id="challengeGrid"></div>
+        </div>
+      </div>
+
+
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="rememberMe">
+          <label class="form-check-label" for="rememberMe">Remember me</label>
+        </div>
+        <a href="{% url 'Phone_Reset_Password' %}" class="small">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="submit-btn">Login</button>
+
+      <p class="text-center mt-3 mb-0">
+        You can also login with your <a href="{% url 'Email_Login' %}">Email</a>
+      </p>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    const phone = document.getElementById("phone");
+    const password = document.getElementById("password");
+    const phoneFeedback = document.getElementById("phoneFeedback");
+    const passwordFeedback = document.getElementById("passwordFeedback");
+
+    const togglePassword = document.getElementById("togglePassword");
+    togglePassword.addEventListener("click", () => {
+      const isPassword = password.type === "password";
+      password.type = isPassword ? "text" : "password";
+      togglePassword.innerHTML = isPassword ? '<i class="bi bi-eye"></i>' : '<i class="bi bi-eye-slash"></i>';
+    });
+
+    function validatePhone() {
+      const pattern = /^[+]?[0-9]{10,15}$/;
+      if (!pattern.test(phone.value)) {
+        phoneFeedback.style.display = "block";
+        return false;
+      } else {
+        phoneFeedback.style.display = "none";
+        return true;
+      }
+    }
+    function validatePassword() {
+      if (password.value.length < 6) {
+        passwordFeedback.style.display = "block";
+        return false;
+      } else {
+        passwordFeedback.style.display = "none";
+        return true;
+      }
+    }
+
+    // Human Verification
+    const humanVerifyCheckbox = document.getElementById("humanVerify");
+    const checkboxWrapper = document.getElementById("checkboxWrapper");
+    const robotChallenge = document.getElementById("robotChallenge");
+    const challengeGrid = document.getElementById("challengeGrid");
+    let isVerified = false;
+
+    const challengeItems = [
+      { emoji: '🚦', isTrafficLight: true },
+      { emoji: '✈️', isTrafficLight: false },
+      { emoji: '🚗', isTrafficLight: false },
+      { emoji: '🚦', isTrafficLight: true },
+      { emoji: '🌳', isTrafficLight: false },
+      { emoji: '🚦', isTrafficLight: true },
+      { emoji: '⛽', isTrafficLight: false },
+      { emoji: '🛺', isTrafficLight: false },
+      { emoji: '✈️', isTrafficLight: false }
+    ];
+
+    function createChallengeGrid() {
+      challengeGrid.innerHTML = '';
+      challengeItems.forEach((item, index) => {
+        const el = document.createElement("div");
+        el.className = "challenge-item";
+        el.textContent = item.emoji;
+        el.dataset.index = index;
+        el.addEventListener("click", handleChallengeClick);
+        challengeGrid.appendChild(el);
+      });
+    }
+
+    function handleChallengeClick(e) {
+      const item = e.currentTarget;
+      const index = parseInt(item.dataset.index);
+      if (!challengeItems[index].isTrafficLight) {
+        item.style.animation = "shake 0.5s";
+        setTimeout(() => item.style.animation = "", 500);
+        return;
+      }
+      item.classList.add("selected");
+      item.style.pointerEvents = "none";
+
+      const selected = document.querySelectorAll(".challenge-item.selected").length;
+      const total = challengeItems.filter(i => i.isTrafficLight).length;
+
+      if (selected === total) {
+        setTimeout(() => {
+          document.querySelectorAll(".challenge-item.selected").forEach(el => {
+            el.classList.remove("selected");
+            el.classList.add("correct");
+          });
+          setTimeout(() => {
+            robotChallenge.classList.remove("show");
+            checkboxWrapper.classList.add("verified");
+            isVerified = true;
+          }, 800);
+        }, 500);
+      }
+    }
+
+    humanVerifyCheckbox.addEventListener("change", function () {
+      if (this.checked && !isVerified) {
+        robotChallenge.classList.add("show");
+        createChallengeGrid();
+      } else if (!this.checked) {
+        robotChallenge.classList.remove("show");
+        checkboxWrapper.classList.remove("verified");
+        isVerified = false;
+      }
+    });
+
+    // Submit
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      if (!validatePhone() || !validatePassword() || !isVerified) {
+        e.preventDefault();
+        Swal.fire({
+          icon: "error",
+          title: "Submission Failed",
+          text: "Please verify you are a human before continuing!",
+          confirmButtonColor: "#d33",
+          confirmButtonText: "Okay"
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>

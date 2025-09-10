@@ -6,17 +6,19 @@
     <meta charset="UTF-8">
     <title>Bus Details</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
 
 <body class="bg-light">
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow p-4">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow p-4" data-aos="fade-down"
+        data-aos-duration="1200">
         <div class="container">
             <a class="navbar-brand" href="{% url 'Home' %}">&#128652; QuickBus</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -81,12 +83,12 @@
         </div>
     </nav>
 
-    <div class="container py-5">
-        <div class="card shadow " style="margin-top: 10%;">
-            <h2 class="text-center mb-4">Bus Details</h2>
+    <div class="container " style="padding-top: 100px;">
+        <div class="card shadow" style="margin-top: 10%;" data-aos="zoom-in" data-aos-duration="1000">
+            <h2 class="text-center mb-4" data-aos="fade-up" data-aos-delay="600">Bus Details</h2>
 
             <div class="row">
-                <div class="col-md-4 text-center">
+                <div class="col-md-4 text-center" data-aos="fade-right" data-aos-delay="700">
                     {% if bus.Bus_image %}
                     <img src="{{ bus.Bus_image.url }}" alt="Bus Image" class="img-fluid rounded shadow-sm"
                         style="height: 90%;">
@@ -95,7 +97,7 @@
                     {% endif %}
                 </div>
 
-                <div class="col-md-8">
+                <div class="col-md-8" data-aos="fade-left" data-aos-delay="700">
                     <table class="table table-borderless">
                         <tr>
                             <th>Bus Number:</th>
@@ -109,7 +111,6 @@
                             <th>Bus Type:</th>
                             <td>{{ bus.Bus_Types }}</td>
                         </tr>
-
                         <tr>
                             <th>Total Seats:</th>
                             <td>{{ bus.Total_seat }}</td>
@@ -127,13 +128,14 @@
                             <td>{{ bus.Route_Fk.destination }}</td>
                         </tr>
                     </table>
-
                 </div>
             </div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
-
 </html>

@@ -93,9 +93,9 @@ class Email_RegisterView(View):
             mail = send_mail(subject="otp for registration",message= str(otp),from_email= settings.EMAIL_HOST_USER,recipient_list=[email])
 
             if mail:
+
                 print("hello")
-            
-            
+                print(otp)
             return redirect('Email_otp_verify')
         
         else:
@@ -119,14 +119,15 @@ class Email_OtpVerifyView(View):
 
             enterd_otp = form.cleaned_data.get('otp')
 
-            if int(enterd_otp) == int(request.session.get('otp')):
+            if str(enterd_otp) == str(request.session.get('otp')):
    
                 CustomUser.objects.create_user(username=request.session.get('username'),email=request.session.get('email'),
                 password=request.session.get('password'))
 
-                print("done")
+                print(enterd_otp)
+               
 
-            return redirect("Email_Login")
+                return redirect("Email_Login")
                 
         return redirect('Email_Signup')
 
@@ -236,14 +237,14 @@ class Phone_Otp_Verify_View(View):
 
             enterd_otp = form.cleaned_data.get('otp')
     
-            if int(enterd_otp) == int(request.session.get('otp')):
+            if str(enterd_otp) == str(request.session.get('otp')):
 
                 CustomUser.objects.create_user(username=request.session.get('username'),phone_number= request.session.get('phone_number'),
                 password=request.session.get('password'))
 
                 print("sucessfully created")
 
-            return redirect("Phone_Login")
+                return redirect("Phone_Login")
         
         return redirect("Phone_Signup")
 

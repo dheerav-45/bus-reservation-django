@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
     <title>Booking</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <style>
         body {
             background: url("{% static 'images/bus-bg.jpg' %}") no-repeat center center fixed;
@@ -36,12 +36,12 @@
             <h2 class="text-center mb-4">Book Your Seat</h2>
 
             {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-info alert-dismissible fade show" role="alert">
-                        {{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                {% endfor %}
+            {% for message in messages %}
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
             {% endif %}
 
             <form method="post">
@@ -74,8 +74,6 @@
             </form>
         </div>
     </div>
-
- 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
