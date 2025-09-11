@@ -501,7 +501,7 @@ class ProfileView(View):
 
             user.image = request.FILES.get('image')
 
-        user.save()
+            user.save()
 
         return redirect('profile')                
     #request.FILES >> If you don’t include request.FILES in forms with file uploads, the file fields will be ignored, and the uploaded files won’t be saved.

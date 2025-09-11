@@ -59,6 +59,13 @@
         .modal-content {
             color: #000;
         }
+
+        .profile-img:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+        }
+
+
     </style>
 </head>
 
@@ -98,15 +105,7 @@
                         <a class="nav-link" href="{% url 'Phone_Login' %}">
                             <i class="bi bi-box-arrow-in-right me-1"></i>Login
                         </a>
-
-                        .profile-img:hover {
-                        transform: scale(1.1) rotate(5deg);
-                        box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
-                        }
-
-
-                        .btn-edit {
-
+                        
                     </li>
                     {% endif %}
                 </ul>
@@ -152,9 +151,9 @@
                                 name="phone_number" class="form-control" value="{{ data.phone_number }}"></div>
                         <div class="mb-3"><label class="form-label">Gender</label>
                             <select name="gender" class="form-select">
-                                <option value="Male" {% if data.gender=='Male' %}selected{% endif %}>Male</option>
-                                <option value="Female" {% if data.gender=='Female' %}selected{% endif %}>Female</option>
-                                <option value="Other" {% if data.gender=='Other' %}selected{% endif %}>Other</option>
+                                <option value="Male" {% if data.gender == 'Male' %}selected{% endif %}>Male</option>
+                                <option value="Female" {% if data.gender == 'Female' %}selected{% endif %}>Female</option>
+                                <option value="Other" {% if data.gender == 'Other' %}selected{% endif %}>Other</option>
                             </select>
                         </div>
                         <div class="mb-3"><label class="form-label">Age</label><input type="text" name="age"
